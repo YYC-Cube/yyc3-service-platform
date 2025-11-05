@@ -7,6 +7,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { SalesChart } from "@/components/charts/sales-chart"
 import { FinanceChart } from "@/components/charts/finance-chart"
 import { PerformanceChart } from "@/components/charts/performance-chart"
+import { AIRecommendationsPanel } from "@/components/ai-recommendations-panel"
 import {
   Users,
   DollarSign,
@@ -171,7 +172,6 @@ export function DashboardContent() {
             <p className="text-blue-200 text-sm mt-2">智能开启管理时刻，科技引导数据效率</p>
           </div>
           <div className="flex items-center space-x-4">
-            
             <div className="text-right">
               <p className="text-sm font-medium text-blue-100">YanYuCloud³ Management System</p>
               <p className="text-xs text-blue-200">让管理更智能，让数据更效率</p>
@@ -219,6 +219,9 @@ export function DashboardContent() {
           )
         })}
       </div>
+
+      {/* AI Recommendations Panel */}
+      <AIRecommendationsPanel />
 
       {/* 主要内容区域 */}
       <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">

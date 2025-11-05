@@ -12,7 +12,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { UserAvatar } from "@/components/ui/user-avatar"
 import { Search, Bell, Settings, User, LogOut, MessageSquare, Calendar, HelpCircle } from "lucide-react"
 
 export function Header() {
@@ -33,7 +33,7 @@ export function Header() {
           <Input
             type="search"
             placeholder="搜索功能、客户、任务..."
-            className="pl-10 pr-4 py-2 w-full border-slate-200 focus:border-blue-500 focus:ring-blue-500 bg-slate-200"
+            className="pl-10 pr-4 py-2 w-full border-slate-200 focus:border-blue-500 focus:ring-blue-500 bg-slate-50"
           />
         </div>
       </div>
@@ -93,12 +93,7 @@ export function Header() {
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="ghost" className="relative h-10 w-10 rounded-full">
-              <Avatar className="h-10 w-10">
-                <AvatarImage src="/placeholder.svg?height=40&width=40" alt="用户头像" />
-                <AvatarFallback className="bg-gradient-to-br from-blue-400 to-indigo-500 text-white font-semibold">
-                  管
-                </AvatarFallback>
-              </Avatar>
+              <UserAvatar name="管理员" size="lg" />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent className="w-56" align="end" forceMount>

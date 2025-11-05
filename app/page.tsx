@@ -11,6 +11,8 @@ import { MobileDetectionService } from "@/lib/mobile-detection"
 import { mobileNotificationService } from "@/lib/mobile-notifications"
 import { QuickActionHandler } from "@/components/quick-action-handler"
 import { setupDefaultActions } from "@/lib/action-manager"
+import { AIAssistantWidget } from "@/components/ai-assistant-widget"
+import { aiEnhancementService } from "@/lib/ai-enhancement-service"
 
 // 导入各个模块组件
 import { DashboardContent } from "@/components/dashboard-content"
@@ -43,6 +45,15 @@ export default function HomePage() {
         console.log("通知权限状态:", permission)
       })
     }
+  }, [])
+
+  // 初始化AI增强服务
+  useEffect(() => {
+    aiEnhancementService.initialize().then((success) => {
+      if (success) {
+        console.log("✅ AI增强服务已启动")
+      }
+    })
   }, [])
 
   // 检测设备类型
@@ -211,6 +222,9 @@ export default function HomePage() {
           }
         }}
       />
+
+      {/* AI Assistant Widget */}
+      <AIAssistantWidget />
 
       <div className="flex h-screen">
         {/* 侧边栏 */}

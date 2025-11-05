@@ -5,7 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Input } from "@/components/ui/input"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { UserAvatar } from "@/components/ui/user-avatar"
 import { Progress } from "@/components/ui/progress"
 import {
   Users,
@@ -32,7 +32,6 @@ interface Customer {
   value: number
   status: "active" | "potential" | "inactive"
   lastContact: string
-  avatar: string
   tags: string[]
   satisfaction: number
 }
@@ -49,7 +48,6 @@ export function CustomerManagement() {
       value: 500000,
       status: "active",
       lastContact: "2025-06-19",
-      avatar: "/placeholder.svg?height=40&width=40",
       tags: ["VIP", "大客户"],
       satisfaction: 95,
     },
@@ -63,7 +61,6 @@ export function CustomerManagement() {
       value: 300000,
       status: "potential",
       lastContact: "2025-06-18",
-      avatar: "/placeholder.svg?height=40&width=40",
       tags: ["潜在客户", "房地产"],
       satisfaction: 78,
     },
@@ -77,7 +74,6 @@ export function CustomerManagement() {
       value: 800000,
       status: "active",
       lastContact: "2025-06-17",
-      avatar: "/placeholder.svg?height=40&width=40",
       tags: ["VIP", "长期合作"],
       satisfaction: 92,
     },
@@ -91,7 +87,6 @@ export function CustomerManagement() {
       value: 1200000,
       status: "active",
       lastContact: "2025-06-16",
-      avatar: "/placeholder.svg?height=40&width=40",
       tags: ["VIP", "科技企业", "战略客户"],
       satisfaction: 98,
     },
@@ -227,12 +222,7 @@ export function CustomerManagement() {
                   {/* 客户头部信息 */}
                   <div className="flex items-start justify-between mb-4">
                     <div className="flex items-center space-x-3">
-                      <Avatar className="w-12 h-12 ring-2 ring-blue-200">
-                        <AvatarImage src={customer.avatar || "/placeholder.svg"} />
-                        <AvatarFallback className="bg-gradient-to-br from-blue-400 to-indigo-500 text-white font-semibold">
-                          {customer.name[0]}
-                        </AvatarFallback>
-                      </Avatar>
+                      <UserAvatar name={customer.name} size="lg" showRing ringColor="ring-blue-200" />
                       <div>
                         <h3 className="font-semibold text-slate-800">{customer.name}</h3>
                         <p className="text-sm text-slate-600">{customer.company}</p>

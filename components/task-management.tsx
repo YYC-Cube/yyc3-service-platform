@@ -16,7 +16,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { UserAvatar } from "@/components/ui/user-avatar"
 import { Progress } from "@/components/ui/progress"
 import { CheckSquare, Plus, Search, Calendar, Clock, AlertCircle, CheckCircle, Users, Target } from "lucide-react"
 
@@ -27,7 +27,6 @@ interface Task {
   status: "todo" | "in-progress" | "review" | "completed"
   priority: "low" | "medium" | "high" | "urgent"
   assignee: string
-  assigneeAvatar: string
   dueDate: string
   progress: number
   tags: string[]
@@ -40,7 +39,6 @@ interface TeamMember {
   id: string
   name: string
   role: string
-  avatar: string
   tasks: number
   completedTasks: number
 }
@@ -54,7 +52,6 @@ export function TaskManagement() {
       status: "in-progress",
       priority: "high",
       assignee: "张设计师",
-      assigneeAvatar: "/placeholder.svg?height=32&width=32",
       dueDate: "2025-06-25",
       progress: 65,
       tags: ["设计", "原型"],
@@ -69,7 +66,6 @@ export function TaskManagement() {
       status: "todo",
       priority: "medium",
       assignee: "李工程师",
-      assigneeAvatar: "/placeholder.svg?height=32&width=32",
       dueDate: "2025-06-30",
       progress: 0,
       tags: ["技术", "优化"],
@@ -84,7 +80,6 @@ export function TaskManagement() {
       status: "completed",
       priority: "medium",
       assignee: "王分析师",
-      assigneeAvatar: "/placeholder.svg?height=32&width=32",
       dueDate: "2025-06-20",
       progress: 100,
       tags: ["调研", "报告"],
@@ -99,7 +94,6 @@ export function TaskManagement() {
       status: "review",
       priority: "high",
       assignee: "陈经理",
-      assigneeAvatar: "/placeholder.svg?height=32&width=32",
       dueDate: "2025-06-22",
       progress: 90,
       tags: ["客户", "分析"],
@@ -114,7 +108,6 @@ export function TaskManagement() {
       id: "1",
       name: "张设计师",
       role: "UI/UX设计师",
-      avatar: "/placeholder.svg?height=40&width=40",
       tasks: 5,
       completedTasks: 3,
     },
@@ -122,7 +115,6 @@ export function TaskManagement() {
       id: "2",
       name: "李工程师",
       role: "后端开发",
-      avatar: "/placeholder.svg?height=40&width=40",
       tasks: 8,
       completedTasks: 6,
     },
@@ -130,7 +122,6 @@ export function TaskManagement() {
       id: "3",
       name: "王分析师",
       role: "数据分析师",
-      avatar: "/placeholder.svg?height=40&width=40",
       tasks: 4,
       completedTasks: 4,
     },
@@ -138,7 +129,6 @@ export function TaskManagement() {
       id: "4",
       name: "陈经理",
       role: "项目经理",
-      avatar: "/placeholder.svg?height=40&width=40",
       tasks: 6,
       completedTasks: 4,
     },
@@ -175,21 +165,6 @@ export function TaskManagement() {
         return <Badge className="bg-slate-100 text-slate-600 border-slate-200">低优先级</Badge>
       default:
         return <Badge variant="secondary">普通</Badge>
-    }
-  }
-
-  const getStatusIcon = (status: string) => {
-    switch (status) {
-      case "todo":
-        return <Clock className="w-4 h-4" />
-      case "in-progress":
-        return <AlertCircle className="w-4 h-4" />
-      case "review":
-        return <CheckCircle className="w-4 h-4" />
-      case "completed":
-        return <CheckCircle className="w-4 h-4" />
-      default:
-        return <Clock className="w-4 h-4" />
     }
   }
 
@@ -419,12 +394,7 @@ export function TaskManagement() {
                             <p className="text-xs text-slate-600 line-clamp-2">{task.description}</p>
                             <div className="flex items-center justify-between">
                               <div className="flex items-center space-x-2">
-                                <Avatar className="w-6 h-6">
-                                  <AvatarImage src={task.assigneeAvatar || "/placeholder.svg"} />
-                                  <AvatarFallback className="text-xs bg-gradient-to-br from-blue-400 to-indigo-500 text-white">
-                                    {task.assignee[0]}
-                                  </AvatarFallback>
-                                </Avatar>
+                                <UserAvatar name={task.assignee} size="sm" />
                                 <span className="text-xs text-slate-600">{task.assignee}</span>
                               </div>
                               <div className="flex items-center space-x-1">
@@ -477,12 +447,7 @@ export function TaskManagement() {
                             </div>
                             <div className="flex items-center justify-between">
                               <div className="flex items-center space-x-2">
-                                <Avatar className="w-6 h-6">
-                                  <AvatarImage src={task.assigneeAvatar || "/placeholder.svg"} />
-                                  <AvatarFallback className="text-xs bg-gradient-to-br from-blue-400 to-indigo-500 text-white">
-                                    {task.assignee[0]}
-                                  </AvatarFallback>
-                                </Avatar>
+                                <UserAvatar name={task.assignee} size="sm" />
                                 <span className="text-xs text-slate-600">{task.assignee}</span>
                               </div>
                               <div className="flex items-center space-x-1">
@@ -535,12 +500,7 @@ export function TaskManagement() {
                             </div>
                             <div className="flex items-center justify-between">
                               <div className="flex items-center space-x-2">
-                                <Avatar className="w-6 h-6">
-                                  <AvatarImage src={task.assigneeAvatar || "/placeholder.svg"} />
-                                  <AvatarFallback className="text-xs bg-gradient-to-br from-yellow-400 to-orange-500 text-white">
-                                    {task.assignee[0]}
-                                  </AvatarFallback>
-                                </Avatar>
+                                <UserAvatar name={task.assignee} size="sm" />
                                 <span className="text-xs text-slate-600">{task.assignee}</span>
                               </div>
                               <div className="flex items-center space-x-1">
@@ -590,12 +550,7 @@ export function TaskManagement() {
                             <p className="text-xs text-slate-600 line-clamp-2">{task.description}</p>
                             <div className="flex items-center justify-between">
                               <div className="flex items-center space-x-2">
-                                <Avatar className="w-6 h-6">
-                                  <AvatarImage src={task.assigneeAvatar || "/placeholder.svg"} />
-                                  <AvatarFallback className="text-xs bg-gradient-to-br from-emerald-400 to-green-500 text-white">
-                                    {task.assignee[0]}
-                                  </AvatarFallback>
-                                </Avatar>
+                                <UserAvatar name={task.assignee} size="sm" />
                                 <span className="text-xs text-slate-600">{task.assignee}</span>
                               </div>
                               <div className="flex items-center space-x-1">
@@ -643,12 +598,7 @@ export function TaskManagement() {
                     key={member.id}
                     className="flex items-center space-x-4 p-4 bg-gradient-to-r from-slate-50 to-blue-50 rounded-xl hover:shadow-md transition-all duration-300"
                   >
-                    <Avatar className="w-12 h-12 ring-2 ring-blue-200">
-                      <AvatarImage src={member.avatar || "/placeholder.svg"} />
-                      <AvatarFallback className="bg-gradient-to-br from-blue-400 to-indigo-500 text-white font-semibold">
-                        {member.name[0]}
-                      </AvatarFallback>
-                    </Avatar>
+                    <UserAvatar name={member.name} size="lg" showRing ringColor="ring-blue-200" />
                     <div className="flex-1">
                       <h4 className="font-semibold text-slate-800">{member.name}</h4>
                       <p className="text-sm text-slate-600">{member.role}</p>
