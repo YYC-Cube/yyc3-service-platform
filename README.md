@@ -193,31 +193,31 @@ OLLAMA_MAX_TOKENS=2048
 \`\`\`
 enterprise-management-system/
 ├── app/                    # Next.js应用目录
-│   ├── page.tsx           # 主页面
-│   ├── layout.tsx         # 根布局
-│   └── globals.css        # 全局样式
-├── components/            # React组件
-│   ├── ui/               # UI基础组件
-│   ├── mobile/           # 移动端组件
-│   ├── charts/           # 图表组件
+│   ├── page.tsx            # 主页面
+│   ├── layout.tsx          # 根布局
+│   └── globals.css         # 全局样式
+├── components/             # React组件
+│   ├── ui/                 # UI基础组件
+│   ├── mobile/             # 移动端组件
+│   ├── charts/             # 图表组件
 │   ├── dashboard-content.tsx
 │   ├── task-management.tsx
 │   ├── customer-management.tsx
 │   ├── ai-assistant-widget.tsx
 │   └── ai-recommendations-panel.tsx
-├── lib/                  # 工具库
+├── lib/                   # 工具库
 │   ├── ai-enhancement-service.ts
 │   ├── ollama-service.ts
 │   ├── local-database.ts
 │   └── background-sync.ts
-├── hooks/                # React Hooks
-├── docs/                 # 文档
+├── hooks/                 # React Hooks
+├── docs/                  # 文档
 │   ├── AI_SYSTEM_GUIDE.md
 │   └── SYSTEM_ARCHITECTURE.md
-├── public/               # 静态资源
-│   ├── sw.js            # Service Worker
-│   └── manifest.json    # PWA清单
-└── package.json         # 依赖配置
+├── public/                # 静态资源
+│   ├── sw.js              # Service Worker
+│   └── manifest.json      # PWA清单
+└── package.json           # 依赖配置
 \`\`\`
 
 ## 🎯 核心功能
@@ -357,9 +357,9 @@ npm run start
 
 **YanYu Cloud Team**
 
-- 项目负责人: [@YY-Nexus](https://github.com/YY-Nexus)
-- 技术支持: support@yanyucloud.com
-- 反馈建议: feedback@yanyucloud.com
+- 项目负责人: [@YYC-Cube](https://github.com/YYC-Cube)
+- 技术支持: admin@0379.email
+- 反馈建议: admin@0379.email
 
 ## 🙏 致谢
 
