@@ -62,7 +62,7 @@ export function GlobalShortcuts({ onNavigate, onAction }: GlobalShortcutsProps) 
       key: "Ctrl+2", 
       description: "打开客户管理",
       action: () => onNavigate?("/customers"),
-      category: "导航",\
+      category: "导航",
       icon: <Users className="w-4 h-4" />
     },
     {

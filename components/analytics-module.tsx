@@ -289,4 +289,196 @@ export function AnalyticsModule() {
                             </Badge>
                           </div>
                           <p className="text-sm text-muted-foreground mb-2">{report.description}</p>
-                          <span className="text\
+                          <span className="text-xs text-muted-foreground">最后更新: {report.lastUpdate}</span>
+                        </div>
+                        <Button variant="outline" size="sm">
+                          <Eye className="w-4 h-4 mr-1" />
+                          查看
+                        </Button>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </TabsContent>
+
+            <TabsContent value="insights" className="space-y-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <Card className="bg-white/80 backdrop-blur-sm border border-sky-200 rounded-xl shadow-sm hover:shadow-md transition-all duration-200">
+                  <CardHeader>
+                    <CardTitle className="text-base">关键业务洞察</CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    {[
+                      { 
+                        insight: "华东地区销售额同比增长25%", 
+                        impact: "高影响",
+                        trend: "positive",
+                        recommendation: "考虑在该地区增加营销投入"
+                      },
+                      { 
+                        insight: "产品A在年轻用户群体中受欢迎度上升", 
+                        impact: "中影响",
+                        trend: "positive", 
+                        recommendation: "针对年轻用户优化产品功能"
+                      },
+                      { 
+                        insight: "周末客户活跃度下降15%", 
+                        impact: "中影响",
+                        trend: "negative",
+                        recommendation: "推出周末专属促销活动"
+                      },
+                    ].map((item, index) => (
+                      <div key={index} className="p-3 bg-blue-50 rounded-lg border border-blue-200">
+                        <div className="flex justify-between items-start mb-2">
+                          <p className="text-sm font-medium text-blue-800 flex-1">{item.insight}</p>
+                          <Badge 
+                            variant={item.trend === "positive" ? "default" : "secondary"}
+                            className={item.trend === "positive" ? "bg-green-100 text-green-800" : "bg-red-100 text-red-800"}
+                          >
+                            {item.impact}
+                          </Badge>
+                        </div>
+                        <p className="text-xs text-blue-600">{item.recommendation}</p>
+                      </div>
+                    ))}
+                  </CardContent>
+                </Card>
+
+                <Card className="bg-white/80 backdrop-blur-sm border border-sky-200 rounded-xl shadow-sm hover:shadow-md transition-all duration-200">
+                  <CardHeader>
+                    <CardTitle className="text-base">趋势分析</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-4">
+                      <div className="flex justify-between items-center">
+                        <span className="text-sm">移动端访问增长</span>
+                        <div className="flex items-center space-x-2">
+                          <TrendingUp className="w-4 h-4 text-green-600" />
+                          <span className="text-green-600 font-medium">+32%</span>
+                        </div>
+                      </div>
+                      <div className="w-full h-2 bg-sky-100 rounded-full overflow-hidden">
+                        <div className="w-3/4 h-full bg-gradient-to-r from-green-400 to-green-500 rounded-full"></div>
+                      </div>
+
+                      <div className="flex justify-between items-center">
+                        <span className="text-sm">客户留存率</span>
+                        <div className="flex items-center space-x-2">
+                          <TrendingUp className="w-4 h-4 text-green-600" />
+                          <span className="text-green-600 font-medium">+18%</span>
+                        </div>
+                      </div>
+                      <div className="w-full h-2 bg-sky-100 rounded-full overflow-hidden">
+                        <div className="w-2/3 h-full bg-gradient-to-r from-green-400 to-green-500 rounded-full"></div>
+                      </div>
+
+                      <div className="flex justify-between items-center">
+                        <span className="text-sm">平均订单价值</span>
+                        <div className="flex items-center space-x-2">
+                          <TrendingUp className="w-4 h-4 text-green-600" />
+                          <span className="text-green-600 font-medium">+12%</span>
+                        </div>
+                      </div>
+                      <div className="w-full h-2 bg-sky-100 rounded-full overflow-hidden">
+                        <div className="w-1/2 h-full bg-gradient-to-r from-green-400 to-green-500 rounded-full"></div>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+            </TabsContent>
+
+            <TabsContent value="predictions" className="space-y-4">
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <Card className="bg-white/80 backdrop-blur-sm border border-sky-200 rounded-xl shadow-sm hover:shadow-md transition-all duration-200">
+                  <CardHeader>
+                    <CardTitle className="text-base">销售预测</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-3">
+                      <div className="text-center p-4 bg-gradient-to-br from-blue-50 to-sky-100 rounded-lg">
+                        <div className="text-2xl font-bold text-blue-600">¥3.2M</div>
+                        <div className="text-sm text-blue-500">下季度预测销售额</div>
+                      </div>
+                      <div className="space-y-2">
+                        <div className="flex justify-between text-sm">
+                          <span>预测准确率</span>
+                          <span className="font-medium text-green-600">87.5%</span>
+                        </div>
+                        <div className="flex justify-between text-sm">
+                          <span>置信区间</span>
+                          <span className="font-medium">85%-92%</span>
+                        </div>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card className="bg-white/80 backdrop-blur-sm border border-sky-200 rounded-xl shadow-sm hover:shadow-md transition-all duration-200">
+                  <CardHeader>
+                    <CardTitle className="text-base">客户增长预测</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-3">
+                      <div className="text-center p-4 bg-gradient-to-br from-green-50 to-emerald-100 rounded-lg">
+                        <div className="text-2xl font-bold text-green-600">1,584</div>
+                        <div className="text-sm text-green-500">下月预测新增客户</div>
+                      </div>
+                      <div className="space-y-2">
+                        <div className="flex justify-between text-sm">
+                          <span>企业客户占比</span>
+                          <span className="font-medium">62%</span>
+                        </div>
+                        <div className="flex justify-between text-sm">
+                          <span>个人客户占比</span>
+                          <span className="font-medium">38%</span>
+                        </div>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card className="bg-white/80 backdrop-blur-sm border border-sky-200 rounded-xl shadow-sm hover:shadow-md transition-all duration-200">
+                  <CardHeader>
+                    <CardTitle className="text-base">产品需求预测</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-3">
+                      {[
+                        { product: "产品A", demand: "高", growth: "+28%" },
+                        { product: "产品B", demand: "中", growth: "+15%" },
+                        { product: "产品C", demand: "高", growth: "+32%" },
+                        { product: "产品D", demand: "低", growth: "+5%" },
+                      ].map((item, index) => (
+                        <div key={index} className="flex justify-between items-center">
+                          <span className="text-sm">{item.product}</span>
+                          <div className="flex items-center space-x-2">
+                            <Badge 
+                              variant={
+                                item.demand === "高" ? "default" : 
+                                item.demand === "中" ? "secondary" : "outline"
+                              }
+                              className={
+                                item.demand === "高" ? "bg-red-100 text-red-800" :
+                                item.demand === "中" ? "bg-yellow-100 text-yellow-800" :
+                                "bg-gray-100 text-gray-800"
+                              }
+                            >
+                              {item.demand}
+                            </Badge>
+                            <span className="text-xs font-medium text-green-600">{item.growth}</span>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+            </TabsContent>
+          </Tabs>
+        </CardContent>
+      </Card>
+    </div>
+  )
+}
