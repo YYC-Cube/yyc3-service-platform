@@ -1,4 +1,5 @@
-# 言语云企业管理系统 (YanYu Cloud Enterprise Management System)
+# 言语云企业管理系统
+(YanYu Cloud Enterprise Management System)
 
 <div align="center">
 
